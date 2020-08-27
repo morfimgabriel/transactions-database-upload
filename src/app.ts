@@ -3,7 +3,6 @@ import 'dotenv/config';
 
 import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
-
 import routes from './routes';
 import AppError from './errors/AppError';
 
@@ -11,6 +10,10 @@ import createConnection from './database';
 
 createConnection();
 const app = express();
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const cors = require('cors');
+
+app.use(cors());
 
 app.use(express.json());
 app.use(routes);
